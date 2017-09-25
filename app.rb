@@ -13,6 +13,17 @@ get('/') do
 end
 
 post('/') do
-  Team.create({name: params["name"]})
+  Team.create({name: params["name"], coach: params["coach"]})
   redirect '/'
+end
+
+get('/teams/:id') do
+  @team = Team.find(params[:id].to_i)
+  erb(:team)
+end
+
+post('/teams/:id') do
+  team = Team.find(params[:id].to_i)
+  Player.create({name: params["name"], team_id: team.id})
+  redirect "/teams/#{team.id}"
 end

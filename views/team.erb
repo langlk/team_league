@@ -1,0 +1,25 @@
+<% if @team %>
+  <h1><%= @team.name %></h1>
+  <h3>Coach: <%= @team.coach %></h3>
+  <h3>Players:</h3>
+  <% if @team.players.any? %>
+    <ul>
+      <% @team.players.each do |player| %>
+        <li><a href="/players/<%= player.id %>"><%= player.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No players added to team yet.</p>
+  <% end %>
+
+  <form class="" action="/teams/<%= @team.id %>" method="post">
+    <h4>Add a Player</h4>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control">
+    </div>
+    <button type="submit" class="btn">Create Player</button>
+  </form>
+<% else %>
+  <h2>Team Not Found</h2>
+<% end %>
