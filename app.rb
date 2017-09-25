@@ -50,3 +50,21 @@ delete('/players/:id') do
   player.delete
   redirect "teams/#{team_id}"
 end
+
+get('/teams/:id/edit') do
+  @team = Team.find(params[:id].to_i)
+  erb(:team_edit)
+end
+
+patch('/teams/:id') do
+  team = Team.find(params[:id].to_i)
+  team.update({name: params["name"]})
+  team.update({coach: params["coach"]})
+  redirect "/teams/#{team.id}"
+end
+
+delete('/teams/:id') do
+  team = Team.find(params[:id].to_i)
+  team.delete
+  redirect "/"
+end

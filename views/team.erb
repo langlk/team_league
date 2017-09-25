@@ -1,5 +1,6 @@
 <% if @team %>
   <h1><%= @team.name %></h1>
+  <a href="/teams/<%= @team.id %>/edit">Edit</a>
   <h3>Coach: <%= @team.coach %></h3>
   <h3>Players:</h3>
   <% if @team.players.any? %>
@@ -20,6 +21,7 @@
     </div>
     <button type="submit" class="btn">Create Player</button>
   </form>
+
 <% else %>
   <h2>Team Not Found</h2>
 <% end %>

@@ -1,6 +1,5 @@
 <% if @player %>
   <h1>Edit Player</h1>
-
   <form class="" action="/players/<%= @player.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <div class="form-group">
