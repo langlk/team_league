@@ -1,0 +1,7 @@
+<% if @player %>
+  <h1><%= @player.name %></h1>
+  <a href="/players/<%= @player.id %>/edit">Edit</a>
+  <h3><a href="/teams/<%= @player.team.id %>"><%= @player.team.name %></a></h3>
+<% else %>
+  <h2>Player Not Found</h2>
+<% end %>
