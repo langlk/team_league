@@ -5,6 +5,7 @@ require('pg')
 require('sinatra/activerecord')
 require('player')
 require('team')
+require('game')
 
 RSpec.configure do |config|
   config.after(:each) do
