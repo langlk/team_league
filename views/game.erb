@@ -1,0 +1,8 @@
+<% if @game %>
+  <h1>
+    <a href="/teams/<%=@game.away_team_id%>"><%=@game.away_team.name%></a> at <a href="/teams/<%=@game.home_team_id%>"><%=@game.home_team.name%></a>
+  </h1>
+  <h3>Score: <%= @game.away_team_score %> to <%= @game.home_team_score %></h3>
+<% else %>
+  <h2>Game Not Found</h2>
+<% end %>

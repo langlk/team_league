@@ -1,0 +1,41 @@
+<h1>Games</h1>
+<%if @games.any? %>
+  <ul>
+    <%@games.each do |game| %>
+      <li><a href="/games/<%=game.id%>"><%=game.away_team.name%> at <%=game.home_team.name%></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%if @teams.length > 1 %>
+  <form class="" action="/games" method="post">
+    <h4>Add a game between two teams</h4>
+    <div class="form-group">
+      <label for="home_team_id">Select a Home Team</label>
+      <select id='home_team_id' name='home_team_id' type='text' class="form-control">
+        <% @teams.each() do |team| %>
+          <option value="<%= team.id()%>"> <%= team.name() %> </option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="away_team_id">Select an Away Team</label>
+      <select id='away_team_id' name='away_team_id' type='text' class="form-control">
+        <% @teams.each() do |team| %>
+          <option value="<%= team.id()%>"> <%= team.name() %> </option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="home_team_score">Home Team Score</label>
+      <input type="number" name="home_team_score" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="away_team_score">Away Team Score</label>
+      <input type="number" name="away_team_score" class="form-control">
+    </div>
+    <button type="submit" class="btn">Create Game</button>
+  </form>
+<% else %>
+  <p>You don't have two teams yet. Try going back to the homepage and adding some.</p>
+<% end %>

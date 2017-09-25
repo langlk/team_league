@@ -1,7 +1,14 @@
 <% if @team %>
   <h1><%= @team.name %></h1>
   <a href="/teams/<%= @team.id %>/edit">Edit</a>
-  <h3>Coach: <%= @team.coach %></h3>
+
+  <h3>Win/Loss Record</h3>
+  <p>Wins: <%=@team.wins%></p>
+  <p>Losses: <%=@team.losses%></p>
+  <% if @team.games.length > 0%>
+    <p>Win percentage: <%=((@team.wins.to_f / @team.games.length.to_f) * 100).to_i %>%</p>
+  <%end%>
+  <h3>Coach: <%=@team.coach%></h3>
   <h3>Players:</h3>
   <% if @team.players.any? %>
     <ul>
@@ -21,7 +28,6 @@
     </div>
     <button type="submit" class="btn">Create Player</button>
   </form>
-
 <% else %>
   <h2>Team Not Found</h2>
 <% end %>

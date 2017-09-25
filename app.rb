@@ -4,6 +4,7 @@ require('sinatra/activerecord')
 also_reload('lib/**/*.rb')
 require('./lib/player')
 require('./lib/team')
+require('./lib/game')
 require('pg')
 require "pry"
 
@@ -67,4 +68,22 @@ delete('/teams/:id') do
   team = Team.find(params[:id].to_i)
   team.delete
   redirect "/"
+end
+
+get('/games') do
+  @teams = Team.all
+  @games = Game.all
+  erb(:games)
+end
+
+post('/games') do
+  Game.create({home_team_id: params["home_team_id"].to_i, away_team_id: params["away_team_id"].to_i, home_team_score: params["home_team_score"].to_i, away_team_score: params["away_team_score"].to_i})
+  @teams = Team.all
+  @games = Game.all
+  erb(:games)
+end
+
+get('/games/:id') do
+  @game = Game.find(params[:id].to_i)
+  erb(:game)
 end
