@@ -12,7 +12,7 @@ RSpec.configure do |config|
       player.destroy
     end
 
-    Employee.all.each do |team|
+    Team.all.each do |team|
       team.destroy
     end
   end

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-class Team
+class Team < ActiveRecord::Base
+  has_many(:players)
 end

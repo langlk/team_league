@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-class Player
+class Player < ActiveRecord::Base
+  belongs_to(:team)
 end
